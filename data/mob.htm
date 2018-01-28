@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags always come first -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+    div {
+        display: block;
+    }
+
+    body,
+    input,
+    select,
+    textarea,
+    button,
+    .ui-btn {
+        font-size: 1em;
+        line-height: 1.3;
+        font-family: sans-serif;
+    }
+
+    html {
+        font-size: 100%;
+    }
+
+    #zoom {
+        margin-bottom: 5px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        width: 140px;
+        height: 30px;
+        font-size: xx-large;
+    }
+
+    #vid {
+        margin-right: auto;
+        margin-left: auto;
+        width: 160px;
+    }
+
+    .button-container:hover {
+        transform: scale(1.07);
+    }
+
+    .button-container:visited {}
+
+    @keyframes spin {
+        0% {
+            transform: rotate(10deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    #ld {
+        margin-left: auto;
+        width: 20px;
+        transform: translateX(-20px);
+        margin-right: auto;
+    }
+
+    .ld {
+
+        position: absolute;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
+    }
+
+
+    input {
+        text-align: center !important;
+    }
+
+    .ui-btn {
+        font-size: 12px !important;
+    }
+
+
+    .main-box {
+        background: #080808;
+        margin-left: auto;
+        margin-right: auto;
+        width: 408px;
+        position: absolute;
+        height: 95%;
+        padding: 10px;
+        border-radius: 12px;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .small-box {
+        background-color: #222222;
+        width: 160px;
+        height: 228px;
+        padding: 4px;
+        margin: 6px;
+        border-radius: 8px;
+    }
+
+    .smaller-box {
+        background-color: #1d1b1b;
+        width: 192px;
+        height: 192px;
+        padding: 0px;
+        margin-left: 73px;
+        border-radius: 56px;
+    }
+
+    .button-container {
+        float: left;
+    }
+
+    .button-container:hover {
+        cursor: pointer
+    }
+
+    .button-container-selected {
+        transform: scale(.65, .65);
+        transition: 0.1s;
+    }
+
+    .sign1 {
+        background-color: tomato;
+        text-align: center;
+        color: white;
+        width: 103px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 25px;
+        border-radius: 25px;
+        margin: 4px;
+    }
+
+    .sign2,
+    .sign8 {
+        background-color: #222222;
+        color: white;
+        width: 50px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        font-size: 12px;
+        border-radius: 4px;
+        margin: 4px;
+    }
+
+    .sign3,
+    .sign6 {
+        /* 0 - 9, vol/ch up/down */
+        background-color: lightyellow;
+        color: #222222;
+        width: 103px;
+        height: 56px;
+        line-height: 54px;
+        text-align: center;
+        font-size: 38px;
+        border-radius: 4px;
+        font-weight: normal;
+        margin: 4px;
+    }
+
+    .sign4 {
+        background-color: gray;
+        color: black;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        font-size: 8px;
+        border-radius: 18px;
+        margin: 4px;
+    }
+
+    .sign5 {
+        background-color: gray;
+        color: black;
+        width: 50px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        font-size: 8px;
+        border-radius: 18px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .sign6 {
+        background-color: #bbbbff;
+        border-radius: 0px;
+        font-size: 24px;
+        font-weight: normal;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .sign7 {
+        background-color: lightyellow;
+        color: black;
+        width: 103px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        font-size: 12px;
+        border-radius: 4px;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    .sign8 {
+        width: 53px;
+        height: 35px;
+        line-height: 12px;
+        text-align: center;
+        font-size: 10px;
+        border-radius: 0px;
+        margin: 0px 0 2px;
+        0;
+    }
+
+    .sign8 i {
+        padding-top: 2px;
+        font-size: 16px;
+    }
+
+    .sign9,
+    .signok {
+        background-color: #1d1b1b;
+        width: 64px;
+        height: 64px;
+        line-height: 66px;
+        text-align: center;
+        font-size: 32px;
+        border-radius: 0px;
+        margin: 0px;
+    }
+
+    .signok {
+        background-color: #333333;
+        font-size: 16px;
+        border-radius: 16px;
+    }
+
+    .radius-top {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+
+    .radius-bottom {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+    .rec {
+        color: tomato;
+    }
+
+    .d3d {
+        color: tomato;
+        margin-top: 8px;
+        font-weight: bold;
+    }
+
+    .mute {
+        margin-top: 15px;
+    }
+
+    .text {
+        font-size: 19px;
+        font-weight: normal;
+    }
+
+    .color {
+
+        width: 75px;
+        font-size: 8px;
+    }
+   
+    .red {
+        background-color: indianred;
+    }
+
+    .green {
+        background-color: mediumseagreen;
+    }
+
+    .yellow {
+        background-color: khaki;
+    }
+
+    .blue {
+        background-color: cornflowerblue;
+    }
+
+    .apps {
+        color: coral;
+    }
+
+    .home {
+        background-color: skyblue;
+        color: black;
+    }
+
+    .lg-logo {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0px;
+        background-image: url(../img/logo-512.png);
+        background-size: 64px 64px;
+        background-repeat: no-repeat;
+        width: 64px;
+        height: 64px;
+    }
+
+    .hidden {
+        visibility: hidden;
+        cursor: default;
+    }
+
+    .noselectable {}
+
+    .lineDiv {
+        clear: both;
+    }
+
+    .big-place {
+        height: 0px;
+    }
+
+    .small-place {}
+
+    small {
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    .sign3 small {
+        font-size: 10px;
+        font-weight: normal;
+    }
+    </style>
+    <script type="text/javascript">
+    var js;
+       function send_request( server) {
+        
+        request = new XMLHttpRequest();
+        request.open("GET", server, true);
+        request.send();
+
+    }
+$.getJSON('http://192.168.1.76/cir.json', function (data) {
+ js = data;
+ 
+});
+
+
+
+
+function send(name){
+
+            
+                for (var i = 0; i < js.main.length; i++) {
+                  if (name == js.main[i].name) {
+                    send_request('http://192.168.1.76/ir?code=' + js.main[i].code);
+                  }
+                }
+                
+               
+       
+    }
+
+    
+    $(document).ready(function() {
+    
+
+$('.button-container').on('click',function(on){
+    console.log(on.currentTarget.id);
+    send(on.currentTarget.id);
+    
+});
+        
+
+        
+
+    })
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <div id="main-box" class="main-box" style="transform: rotate(-0deg); zoom: 80%;">
+        <div style="
+       width: 98%;
+margin-left: auto;
+    margin-right: auto;    zoom: 1.2;
+">
+<div id="onoff"  class="button-container">
+                <div class="sign1"> <i class="fa fa-power-off"></i></div>
+            </div>
+            <div class="button-container">
+                <div class="sign3 text" style="background-color: #080808;"></div>
+            </div>
+            <div id="mute"  class="button-container">
+                <div class="sign3 text">Mute</div>
+            </div>
+            <div class="lineDiv big-place"></div>
+    <div class="smaller-box">
+                <div id="button-0"  class="button-container">
+                    <div class="sign9 hidden">
+                    </div>
+                </div>
+                <div id="up"  class="button-container">
+                    <div class="sign9">
+                        <i class="fa fa-angle-up"></i> </div>
+                </div>
+                <div id="button-0"  class="button-container">
+                    <div class="sign9 hidden">
+                    </div>
+                </div>
+                <div id="left"  class="button-container">
+                    <div class="sign9">
+                        <i class="fa fa-angle-left">
+          </i>
+                    </div>
+                </div>
+                <div id="ok"  class="button-container">
+                    <div class="signok">OK</div>
+                </div>
+                <div id="right"  class="button-container">
+                    <div class="sign9">
+                        <i class="fa fa-angle-right">
+          </i>
+                    </div>
+                </div>
+                <div id="button-0"  class="button-container">
+                    <div class="sign9 hidden">
+                    </div>
+                </div>
+                <div id="down"  class="button-container">
+                    <div class="sign9">
+                        <i class="fa fa-angle-down">
+          </i>
+                    </div>
+                </div>
+                <div id="button-0"  class="button-container">
+                    <div class="sign9 hidden">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="infoText"> </div>
+            <div class="lineDiv big-place"></div>
+            <div id="one"  class="button-container">
+                <div class="sign3">1<small>.,;@</small></div>
+            </div>
+            <div id="two"  class="button-container">
+                <div class="sign3">2<small>abc</small></div>
+            </div>
+            <div id="three"  class="button-container">
+                <div class="sign3">3<small>def</small></div>
+            </div>
+            <div class="lineDiv"> </div>
+            <div id="four"  class="button-container">
+                <div class="sign3">4<small>ghi</small></div>
+            </div>
+            <div id="five"  class="button-container">
+                <div class="sign3">5<small>jkl</small></div>
+            </div>
+            <div id="six"  class="button-container">
+                <div class="sign3">6<small>mno</small></div>
+            </div>
+            <div class="lineDiv"></div>
+            <div id="seven"  class="button-container">
+                <div class="sign3">7<small>pqrs</small></div>
+            </div>
+            <div id="eight"  class="button-container">
+                <div class="sign3">8<small>tuv</small></div>
+            </div>
+            <div id="nine"  class="button-container">
+                <div class="sign3">9<small>wxyz</small></div>
+            </div>
+            <div class="lineDiv">
+            </div>
+            <div id="info"  class="button-container">
+                <div class="sign3 text"> <i class="fa fa-info"></i> </div>
+            </div>
+            <div id="zero"  class="button-container">
+                <div class="sign3">0<small>_</small></div>
+            </div>
+            <div id="back"  class="button-container">
+                <div class="sign3 text"><i class="fa fa-reply"></i></div>
+            </div>
+            <div class="lineDiv big-place">
+            </div>
+            <div id="menu"  class="button-container">
+                <div class="sign7 text">MENU</div>
+            </div>
+            <div id="epg"  class="button-container">
+                <div class="sign7 text">EPG</div>
+            </div>
+            <div id="exit"  class="button-container">
+                <div class="sign7 text">EXIT</div>
+            </div>
+            <div class="lineDiv big-place">
+            </div>
+        
+
+
+            </div>
+            <div class="lineDiv">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

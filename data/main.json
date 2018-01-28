@@ -1,0 +1,123 @@
+<div id="main-box" class="main-box" style="transform: rotate(-0deg); zoom: 80%;">
+<div id="onoff"  class="button-container">
+<div class="sign1"> <i class="fa fa-power-off"></i></div> 
+</div><div  class="button-container">
+<div class="sign3 text" style="background-color: #080808;" ></div> </div>
+<div id="mute"  class="button-container">
+<div class="sign3 text" >MUTE</div></div>
+<div id="infoText"> </div>
+<div class="lineDiv big-place"></div>
+<div id="one"  class="button-container">
+<div class="sign3">1<small>.,;@</small></div></div>
+<div id="two"  class="button-container">
+<div class="sign3">2<small>abc</small></div></div>
+<div id="three"  class="button-container">
+<div class="sign3">3<small>def</small></div></div>
+<div class="lineDiv"> </div>
+<div id="four"  class="button-container">
+<div class="sign3">4<small>ghi</small></div></div>
+<div id="five"  class="button-container">
+<div class="sign3">5<small>jkl</small></div> </div>
+<div id="six"  class="button-container">
+<div class="sign3">6<small>mno</small></div></div>
+<div class="lineDiv"></div>
+<div id="seven"  class="button-container">
+<div class="sign3">7<small>pqrs</small></div>
+</div>
+<div id="eight"  class="button-container">
+<div class="sign3">8<small>tuv</small></div>
+</div>
+<div id="nine"  class="button-container">
+<div class="sign3">9<small>wxyz</small></div>
+</div>
+<div class="lineDiv">
+</div>
+<div id="info"   class="button-container">
+<div class="sign3 text" > <i class="fa fa-info"></i> </div>
+</div>
+<div id="zero"  class="button-container">
+<div class="sign3">0<small>_</small></div>
+</div>
+<div id="back"  class="button-container">
+<div class="sign3 text" ><i class="fa fa-reply"></i></div>
+</div>
+<div class="lineDiv big-place">
+</div>
+<div id="menu"  class="button-container">
+<div class="sign7 text" >MENU</div>
+</div>
+<div id="epg"  class="button-container">
+<div class="sign7 text" >EPG</div>
+</div>
+<div id="exit"  class="button-container">
+<div class="sign7 text" >EXIT</div>
+</div>
+<div class="lineDiv big-place">
+</div>
+<div class="smaller-box">
+<div id="button-0"  class="button-container">
+<div class="sign9 hidesig">
+</div>
+</div>
+<div id="up"  class="button-container">
+<div class="sign9">
+<i class="fa fa-angle-up"></i> </div> </div>
+<div id="button-0"  class="button-container">
+<div class="sign9 hidesig">
+</div>
+</div>
+<div id="left" class="button-container">
+<div class="sign9">
+<i class="fa fa-angle-left">
+ </i>
+</div>
+</div>
+<div id="ok"  class="button-container">
+<div class="signok">OK</div>
+</div>
+<div id="right"  class="button-container">
+<div class="sign9">
+<i class="fa fa-angle-right">
+</i>
+</div>
+</div>
+<div id="button-0"  class="button-container">
+<div class="sign9 hidesig">
+</div>
+</div>
+<div id="down"  class="button-container">
+<div class="sign9">
+<i class="fa fa-angle-down">
+</i>
+</div>
+</div>
+<div id="button-0"  class="button-container">
+<div class="sign9 hidesig">
+</div>
+</div>
+</div>
+<div class="lineDiv big-place">
+</div>
+<div class="lineDiv big-place">
+</div>
+<div id="red"  class="button-container">
+<div class="sign2 color red">
+</div>
+</div>
+<div id="green"  class="button-container">
+<div class="sign2 color green">
+</div>
+</div>
+<div id="yellow"  class="button-container">
+<div class="sign2 color yellow">
+</div>
+</div>
+<div id="blue"  class="button-container">
+<div class="sign2 color blue">
+</div>
+</div>
+<div class="lineDiv big-place">
+</div>
+<div class="lineDiv">
+</div>
+</div>

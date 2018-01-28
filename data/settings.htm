@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags always come first -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+    .del:hover{    background-color: #ff432c;
+    transform: scale(1.1);}
+    #modal_form {
+    width: 300px; 
+        height: 113px;/* Рaзмеры дoлжны быть фиксирoвaны */
+   
+    background: #fff;
+    position: fixed; /* чтoбы oкнo былo в видимoй зoне в любoм месте */
+    top: 45%; /* oтступaем сверху 45%, oстaльные 5% пoдвинет скрипт */
+    left: 50%; /* пoлoвинa экрaнa слевa */
+    margin-top: -150px;
+    margin-left: -150px; /* тут вся мaгия центрoвки css, oтступaем влевo и вверх минус пoлoвину ширины и высoты сooтветственнo =) */
+    display: none; /* в oбычнoм сoстoянии oкнa не дoлжнo быть */
+    opacity: 0; /* пoлнoстью прoзрaчнo для aнимирoвaния */
+    z-index: 5; /* oкнo дoлжнo быть нaибoлее бoльшем слoе */
+    padding: 20px 10px;
+}
+/* Кнoпкa зaкрыть для тех ктo в тaнке) */
+#modal_form #modal_close {
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    display: block;
+}
+/* Пoдлoжкa */
+#overlay {
+    z-index:3; /* пoдлoжкa дoлжнa быть выше слoев элементoв сaйтa, нo ниже слoя мoдaльнoгo oкнa */
+    position:fixed; /* всегдa перекрывaет весь сaйт */
+    background-color:#000; /* чернaя */
+    opacity:0.8; /* нo немнoгo прoзрaчнa */
+    -moz-opacity:0.8; /* фикс прозрачности для старых браузеров */
+    filter:alpha(opacity=80);
+    width:100%; 
+    height:100%; /* рaзмерoм вo весь экрaн */
+    top:0; /* сверху и слевa 0, oбязaтельные свoйствa! */
+    left:0;
+    cursor:pointer;
+    display:none; /* в oбычнoм сoстoянии её нет) */
+}
+    span {
+        padding-right: 7px;
+    }
+    .del{  
+        background: url(tr.svg);
+    display: inline-flex;
+    width: 26px;
+    height: 26px;
+    border: 1px solid;
+    float: right;}
+    .bot {
+        width: 150px;
+        margin: 0.1px;
+    }
+    .name{
+        display: inline-flex;
+            width: 40px;
+    height: 23px;
+    }
+    .btn {
+        margin-left: 20%;
+    }
+    .but{
+            padding: 5px;
+    height: 31px;
+    background-color: #DDD;
+    display: inline-block;
+    width: 133px;
+        padding-left: 50px;
+
+    }
+
+    .div {
+        width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #yes{background-color: #f00;}
+    #no{background-color: #17ff00;}
+    </style>
+
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <script type="text/javascript">
+    
+
+
+
+
+    var isreq;
+
+
+    function izm() {
+        if ($('#newform').css('display') == 'none') {
+
+
+            $('#newform').css('display', 'block');
+            $('#setform').css('display', 'none');
+
+        } else {
+
+            reload();
+            $('#newform').css('display', 'none');
+            $('#setform').css('display', 'block');
+        }
+
+    }
+    var js;
+
+function lcl(){console.log('123');
+$(document).ready(function() {
+
+
+
+    $('.del').click( function(event){ 
+        $('#yes').attr('data',this.id);
+        event.preventDefault(); 
+        $('#overlay').fadeIn(100, 
+            function(){ 
+                $('#modal_form') 
+                    .css('display', 'block') 
+                    .animate({opacity: 1}, 1); 
+        });
+    });
+   
+    $('#modal_close, #yes, #no, #overlay').click( function(){ 
+        $('#modal_form')
+            .animate({opacity: 0, top: '45%'}, 10,  
+                function(){
+                    $(this).css('display', 'none'); 
+                    $('#overlay').fadeOut(100);
+                }
+            );
+    });
+    
+$('#yes').click(function(){
+               console.log();
+               $('#' + js.main[$('#yes').attr('data')].name).val(0);
+               $('#' + js.main[$('#yes').attr('data')].name + 's').empty();
+
+
+            });
+
+
+});}
+    function load() {
+        $.getJSON('http://192.168.1.76/ir.json', function(data) { js = data; });
+        isreq = true;
+        $(document).ready(function() {
+         
+
+         
+           
+            
+            $('#def').click(function() { send_request('http://192.168.1.76/set?ok=33730639&up=33738799&down=33714319&left=33687799&right=33720439&one=33718399&two=33702079&three=33734719&four=33693919&onoff=33706159&five=33726559&six=33710239&seven=33742879&eight=33689839&nine=33722479&zero=33685759');
+             });
+        });
+    }
+
+  
+    function listbuild() {
+
+        for (var i = 0; i < js.main.length; i++) {
+
+
+            if (js.main[i].code != '0' && js.main[i].code != '') {
+
+                $('.bor').append('<div id="'+ js.main[i].name+'s"><input class="bot"  type="number"  name="' + js.main[i].name + '" id="' + js.main[i].name + '"><div class="name"  id="' + js.main[i].name + '">' + js.main[i].name + '</div><div class="del" id="'+ i+'"></div></div>');
+                $('#' + js.main[i].name).val(js.main[i].code); //console.log($('#' + js.main[i].name).val()); 
+         
+
+            
+
+            }
+
+
+        }
+        setTimeout(lcl,500);
+
+        
+    }
+
+
+function gen(sub){
+
+}
+    function build(katal) {
+        $('.bor').empty();
+
+        if (katal) { setTimeout(listbuild, 1000); } else { listbuild(); }
+
+
+
+    }
+
+    function reload() {
+        var ko;
+        $('.bor').empty();
+        if (isreq == false) { load();
+            ko = true; } else { ko = false; }
+
+
+        for (var i = 0; i < js.main.length; i++) {
+
+            $('#' + js.main[i].name).val(js.main[i].code);
+
+
+        }
+        build(ko);
+    }
+
+    function send(nosub) {
+        var on = 0;
+        var fir;
+        server = "http://192.168.1.76/set?err=0";
+        for (var i = 0; i < js.main.length; i++) {
+
+
+            if (nosub) {
+
+                if (js.main[i].code != '0' && $('#' + js.main[i].name).val() != '' && $('#' + js.main[i].name).val() != undefined) {
+                    if ($('#' + js.main[i].name).val() != '0') {server += '&' + js.main[i].name + '=' + $('#' + js.main[i].name).val();
+                    on = 0;}
+                    
+
+                }
+
+
+            } else {
+
+                server += '&' + js.main[i].name + '=' + js.main[i].code;
+                var inname = $("#inname").val();
+                var incode = $("#incode").val();
+                if (i == js.main.length - 1) {
+                    fir = true;
+                    for (var p = 0; p < js.main.length; p++) {
+
+                        if (inname != js.main[p].name) {
+                            if (fir) {
+                                server += '&' + inname + '=' + incode;
+                                fir = false;
+                            }
+
+                            on++;
+
+
+
+                        } else { on = on - on; }
+                    }
+
+
+                }
+
+            }
+        }
+
+
+        if (on == js.main.length || on == 0) {
+            send_request(server);
+        } else { console.log('ERROR'); }
+        isreq = false;
+        load();
+        build(true);
+    }
+
+    function send_request(server) {
+        request = new XMLHttpRequest();
+        request.open("GET", server, true);
+        request.send();
+
+    }
+    </script>
+</head>
+
+<body onload="load();build(true);" style="">
+    <div id="modal_form">
+      <span id="modal_close">X</span> 
+      <div style="
+    margin-left: auto;
+    margin-right: auto;
+    width: 55px;
+        margin-bottom: 14px;
+">DELETE?</div>
+      <div class="but" id="yes">YES</div>
+      <div class="but" id="no">NO</div>
+</div>
+<div id="overlay"></div>
+    <div style="
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+">
+        <input value="NEW CODE" type="button" style="    width: 220px;margin-left: auto;
+    margin-right: auto;" class="bnt" onclick="izm();" id="new">
+        <div id="newform" style="  
+     border: 1px solid;height: 140px; width: 220px;display: none;">
+            <div class="div"><span>CODE</span>
+                <input class="bot" type="number" name="" id="incode"><span>NAME</span>
+                <input class="bot" type="text" id="inname">
+            </div>
+            <input onclick="send(false);" id="sub" style="    margin-left: 34px;width: 150px;" class="btn" type="submit" name="btn">
+        </div>
+        <div id="setform" style="  
+     border: 1px solid;width: 200px;width: 220px;display: block;">
+            <input class="btn" style="
+    width: 100%;
+    margin-left: 0px;
+" type="submit" name="btn" onclick="send(true)">
+            <div class="bor">
+
+            </div>
+        </div>
+        
+        
+        <div id="def" style="
+    height: 100px;
+"></div>
+<script type="text/javascript"> </script>
+</body>
+
+</html>

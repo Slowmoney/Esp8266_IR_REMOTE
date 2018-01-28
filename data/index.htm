@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags always come first -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+ 
+    <style type="text/css">
+    a{    display: list-item;}
+    #ld {
+    margin-left: auto;
+    width: 20px;
+    transform: translateX(-20px);
+    margin-right: auto;
+}
+
+.ld {
+
+    position: absolute;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
+}
+    </style>
+<script src="device.min.js"></script>
+   
+    <script type="text/javascript">//
+
+
+  
+
+
+   function load() {
+         if(device.android()){
+            document.getElementById('main').src="http://192.168.1.76/mob.htm";
+         	//$('body').append('<iframe src="http://192.168.1.76/mobnew.htm" style="width: 100%; height: 600px;  " frameborder="0"></iframe>');
+         }
+   
+   
+  
+
+            else{console.log('windows');
+            document.getElementById('main').src="http://192.168.1.76/windows.htm";
+            //$('body').append('<iframe src="http://192.168.1.76/windows.htm" style=" height: 600px; width: 100%; " frameborder="0"></iframe>');
+        }
+   
+   
+    
+
+        
+       
+    }
+     
+
+
+
+     </script>
+</head>
+
+
+
+<body  onload="load();">
+	
+	<iframe id="main" style="width: 100%; height: 600px;  " frameborder="0"></iframe>
+</body>
+</html>

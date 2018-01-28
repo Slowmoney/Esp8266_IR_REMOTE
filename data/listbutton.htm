@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <style type="text/css">
+div {
+    display: grid;
+}
+    </style>
+    <script type="text/javascript">
+$.getJSON('http://192.168.1.76/cir.json', function (data) {
+ js = data;
+});
+       function send_request( server) {
+        
+        request = new XMLHttpRequest();
+        request.open("GET", server, true);
+        request.send();
+
+    }
+function send(submit){
+
+                name = submit.id;
+                for (var i = 0; i < js.main.length; i++) {
+                  if (name == js.main[i].name) {
+                    send_request('http://192.168.1.76/ir?code=' + js.main[i].code);
+                  }
+                }
+                
+               
+       
+    }
+    function laf(){setTimeout(load,555)}
+    	function load(){
+         var ht;
+       for (var i = 0; i < js.main.length; i++) {
+        
+        if (js.main[i].code != "0") {
+              if (i < js.main.length/2) {ht = 'onew'; }
+              if (i >  js.main.length/2) {ht = 'twow'; }
+             $('#'+ht).append('<div><input class="btn" type="button" onclick="send(this);" id="'+ js.main[i].name +'" value="'+ js.main[i].name+'""></div>');
+            
+        }
+        
+        }}
+
+    </script>
+</head>
+<body onload="laf();">
+<div id="form" style="
+    width: 70px;margin-left: auto;
+    margin-right: auto;
+">
+<div id="onew"></div>
+<div id="twow" style="
+    position: absolute;
+    transform: translateX(75px);
+"></div>
+    
+    
+</div>
+</body>
+</html>
